@@ -26,8 +26,10 @@ body {
 .screen {
     width: 100%;
     background-color: rgb(240, 240, 240);
-    height: 25%;
     border-radius: 16px;
+    text-align: right;
+    padding: 24px;
+    font-size: 48px;
 }
 
 .button-container {
