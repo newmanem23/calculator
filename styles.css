@@ -14,17 +14,15 @@ body {
 
 .calculator-container {
     background-color: white;
-    width: 400px;
-    height: 500px;
     border-radius: 24px;
     padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
 }
 
 .screen {
-    width: 100%;
+    width: 350px;
     background-color: rgb(240, 240, 240);
     border-radius: 16px;
     text-align: right;
@@ -54,7 +52,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 24px;
     flex: 1;
+}
+
+.button:hover {
+    background-color: rgb(200, 200, 200);
+    cursor: pointer;
 }
 
 .double {
