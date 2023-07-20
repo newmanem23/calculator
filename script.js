@@ -32,13 +32,30 @@ function operate(operator, a, b){
 function updateDisplay(event) {
     let screen = document.querySelector('.screen');
     let number = event.target.innerText;
-    screen.innerText += number;
+    if (newInput) {
+        screen.innerText = number;
+        newInput = false;
+    } else if (number === '.' && screen.innerText.includes('.')) {
+        return;
+    } else {
+        screen.innerText += number;
+    }
+}
+
+function clearScreen() {
+    let screen = document.querySelector('.screen');
+    screen.innerText = '0';
+    newInput = true;
 }
 
 
 let firstNumber, secondNumber, operator;
+let newInput = true;
 
-let numbers = document.querySelectorAll('.number');
-numbers.forEach(number => {
-    number.addEventListener('click', updateDisplay);
+let numberButtons = document.querySelectorAll('.number');
+numberButtons.forEach(button => {
+    button.addEventListener('click', updateDisplay);
 });
+
+let clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', clearScreen);
