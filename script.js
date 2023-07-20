@@ -29,6 +29,16 @@ function operate(operator, a, b){
     }
 }
 
+function updateDisplay(event) {
+    let screen = document.querySelector('.screen');
+    let number = event.target.innerText;
+    screen.innerText += number;
+}
+
 
 let firstNumber, secondNumber, operator;
 
+let numbers = document.querySelectorAll('.number');
+numbers.forEach(number => {
+    number.addEventListener('click', updateDisplay);
+});
