@@ -44,8 +44,9 @@ function updateNumber(event) {
 }
 
 function setOperator(event) {
-    if (firstNumber && secondNumber) {
-
+    if (firstNumber) {
+        secondNumber = Number(screen.innerText);
+        evaluate();
     }
     operator = event.target.id;
     newInput = true;
@@ -78,17 +79,13 @@ let newInput = true;
 let screen = document.querySelector('.screen');
 
 let numberButtons = document.querySelectorAll('.number');
-numberButtons.forEach(button => {
-    button.addEventListener('click', updateNumber);
-});
+numberButtons.forEach(button => button.addEventListener('click', updateNumber));
 
 let clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', clearScreen);
 
 let operatorButtons = document.querySelectorAll('.operator');
-operatorButtons.forEach(button => {
-    button.addEventListener('click', setOperator);
-});
+operatorButtons.forEach(button => button.addEventListener('click', setOperator));
 
 let equalButton = document.querySelector('.evaluate');
 equalButton.addEventListener('click', evaluate);
