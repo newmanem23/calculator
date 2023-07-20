@@ -23,6 +23,7 @@ function operate(operator, a, b){
         case "multiply":
             return multiply(a, b);
         case "divide":
+            if (b === 0) return "ERROR";
             return divide(a, b);
         default: 
             return;
@@ -32,6 +33,7 @@ function operate(operator, a, b){
 function updateNumber(event) {
     let number = event.target.innerText;
     if (newInput) {
+        secondNumber = null;
         screen.innerText = number;
         newInput = false;
     } else if (number === '.' && screen.innerText.includes('.')) {
@@ -42,11 +44,8 @@ function updateNumber(event) {
 }
 
 function setOperator(event) {
-    if (firstNumber) {
-        evaluate();
-        operator = event.target.id;
-        newInput = true;
-        return;
+    if (firstNumber && secondNumber) {
+
     }
     operator = event.target.id;
     newInput = true;
@@ -54,13 +53,12 @@ function setOperator(event) {
 }
 
 function evaluate() {
-    if (!operator || !firstNumber) return;
-    secondNumber = Number(screen.innerText);
-    console.log(operator, firstNumber, secondNumber);
+    if (!secondNumber) secondNumber = Number(screen.innerText);
+    if (!firstNumber) firstNumber = Number(screen.innerText);
     let result = operate(operator, firstNumber, secondNumber);
+    if (!result) return;
     screen.innerText = result;
-    firstNumber = result;
-    operator = null;
+    firstNumber = null;
     newInput = true;
 }
 
