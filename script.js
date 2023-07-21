@@ -42,7 +42,7 @@ function updateNumber(event) {
         newInput = false;
         updateScreen();
     } else if (Number(screen.innerText) === 0 && Number(buttonNumber) === 0) {
-        screen.innerText += buttonNnumber;
+        screen.innerText += buttonNumber;
     } else {
         displayNumber = Number(screen.innerText += buttonNumber);
         updateScreen();
