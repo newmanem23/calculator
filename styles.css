@@ -4,12 +4,14 @@
 }
 
 body {
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     background-image: linear-gradient(#F8B195, #F67280, #C06C84, #6C5B7B, #355C7D);
     height: 100vh;
+    gap: 56px;
 }
 
 .calculator-container {
@@ -80,7 +82,12 @@ body {
     flex: 3;
 }
 
-
+.credit,
+.credit a {
+    color: white;
+    font-size: large;
+    text-decoration: none;
+}
 
 
 
