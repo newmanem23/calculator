@@ -50,6 +50,15 @@ function updateNumber(event) {
     }
 }
 
+function decimal() {
+    if (newInput) {
+        screen.innerText = '.';
+        newInput = false;
+    }
+    else if (screen.innerText.includes('.'));
+    else screen.innerText += '.';
+}
+
 function setOperator(event) {
     if (firstNumber) {
         secondNumber = displayNumber;
@@ -112,3 +121,6 @@ equalButton.addEventListener('click', evaluate);
 
 let percentageButton = document.querySelector('.percentage');
 percentageButton.addEventListener('click', percentage);
+
+let decimalButton = document.querySelector('.decimal');
+decimalButton.addEventListener('click', decimal);
