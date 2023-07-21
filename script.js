@@ -30,14 +30,20 @@ function operate(operator, a, b){
     }
 }
 
+function percentage() {
+    displayNumber /= 100;
+    updateScreen();
+}
+
 function updateNumber(event) {
     let number = event.target.innerText;
     if (newInput) {
         displayNumber = Number(number);
         newInput = false;
         updateScreen();
-    } else if (number === '.' && screen.innerText.includes('.')) {
-        return;
+    } else if (number === '.') {
+        if (screen.innerText.includes('.')) return;
+        screen.innerText += number;
     } else {
         displayNumber = Number(screen.innerText += number);
         updateScreen();
@@ -77,7 +83,11 @@ function clearScreen() {
 }
 
 function updateScreen() {
-    screen.innerText = parseFloat(displayNumber.toFixed(6));
+    if (displayNumber.toString().length > 8) {
+        screen.innerText = displayNumber.toExponential(6);
+    } else {
+        screen.innerText = displayNumber;
+    }
     console.log(operator, firstNumber, secondNumber);
 }
 
@@ -99,3 +109,6 @@ operatorButtons.forEach(button => button.addEventListener('click', setOperator))
 
 let equalButton = document.querySelector('.evaluate');
 equalButton.addEventListener('click', evaluate);
+
+let percentageButton = document.querySelector('.percentage');
+percentageButton.addEventListener('click', percentage);
