@@ -41,9 +41,9 @@ function updateNumber(event) {
         displayNumber = Number(number);
         newInput = false;
         updateScreen();
-    } else if (number === '.') {
-        if (screen.innerText.includes('.')) return;
+    } else if (Number(screen.innerText) === 0 && Number(number) === 0) {
         screen.innerText += number;
+        console.log(operator, firstNumber, secondNumber, displayNumber);
     } else {
         displayNumber = Number(screen.innerText += number);
         updateScreen();
@@ -52,10 +52,10 @@ function updateNumber(event) {
 
 function decimal() {
     if (newInput) {
-        screen.innerText = '.';
+        screen.innerText = '0.';
         newInput = false;
     }
-    else if (screen.innerText.includes('.'));
+    else if (screen.innerText.includes('.')) return;
     else screen.innerText += '.';
 }
 
@@ -68,6 +68,7 @@ function setOperator(event) {
     newInput = true;
     firstNumber = displayNumber;
     secondNumber = null;
+    console.log(operator, firstNumber, secondNumber, displayNumber);
     updateScreen();
 }
 
@@ -97,7 +98,7 @@ function updateScreen() {
     } else {
         screen.innerText = displayNumber;
     }
-    console.log(operator, firstNumber, secondNumber);
+    console.log(operator, firstNumber, secondNumber, displayNumber);
 }
 
 let firstNumber = null;
@@ -123,4 +124,4 @@ let percentageButton = document.querySelector('.percentage');
 percentageButton.addEventListener('click', percentage);
 
 let decimalButton = document.querySelector('.decimal');
-decimalButton.addEventListener('click', decimal);
+decimalButton.addEventListener('click', decimal)
