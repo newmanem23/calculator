@@ -36,16 +36,15 @@ function percentage() {
 }
 
 function updateNumber(event) {
-    let number = event.target.innerText;
+    let buttonNumber = event.target.innerText;
     if (newInput) {
-        displayNumber = Number(number);
+        displayNumber = Number(buttonNumber);
         newInput = false;
         updateScreen();
-    } else if (Number(screen.innerText) === 0 && Number(number) === 0) {
+    } else if (Number(screen.innerText) === 0 && Number(buttonNumber) === 0) {
         screen.innerText += number;
-        console.log(operator, firstNumber, secondNumber, displayNumber);
     } else {
-        displayNumber = Number(screen.innerText += number);
+        displayNumber = Number(screen.innerText += buttonNumber);
         updateScreen();
     }
 }
@@ -69,6 +68,7 @@ function setOperator(event) {
     firstNumber = displayNumber;
     secondNumber = null;
     console.log(operator, firstNumber, secondNumber, displayNumber);
+    event.target.classList.add('darkened');
     updateScreen();
 }
 
@@ -80,6 +80,8 @@ function evaluate() {
     displayNumber = result;
     firstNumber = null;
     newInput = true;
+    let operatorButton = document.querySelector('.darkened');
+    if (operatorButton) operatorButton.classList.remove('darkened');
     updateScreen();
 }
 

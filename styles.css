@@ -57,7 +57,8 @@ body {
     flex: 1;
 }
 
-.button:hover {
+.button:hover,
+.darkened {
     filter: brightness(85%);
     cursor: pointer;
 }
